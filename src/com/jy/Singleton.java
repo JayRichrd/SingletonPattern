@@ -1,7 +1,8 @@
 package com.jy;
 
 public class Singleton {
-	private static Singleton instance;
+	// 唯一的实例对象
+	private static Singleton instance = null;
 
 	// 私有化构造函数
 	private Singleton() {
@@ -13,8 +14,12 @@ public class Singleton {
 	 * @return
 	 */
 	public static Singleton getInstance() {
-		if (null == instance) {
-			instance = new Singleton();
+		if (null == instance) { 
+			synchronized (Singleton.class) {// 加锁保持同步
+				if (null == instance) {
+					instance = new Singleton();
+				}
+			}
 		}
 		return instance;
 	}
