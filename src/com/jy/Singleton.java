@@ -1,19 +1,22 @@
-package com.jy;
+ï»¿package com.jy;
 
 public final class Singleton {
-	// Î¨Ò»µÄÊµÀı¶ÔÏó
-	private static final Singleton instance = new Singleton();
+	// å”¯ä¸€çš„å®ä¾‹å¯¹è±¡
+	private static Singleton instance;
 
-	// Ë½ÓĞ»¯¹¹Ôìº¯Êı
+	// ç§æœ‰åŒ–æ„é€ å‡½æ•°
 	private Singleton() {
 	}
 
 	/**
-	 * »ñÈ¡Î¨Ò»ÊµÀı
+	 * è·å–å”¯ä¸€å®ä¾‹
 	 * 
 	 * @return
 	 */
 	public static Singleton getInstance() {
+		if (null == instance) {
+			instance = new Singleton();
+		}
 		return instance;
 	}
 }
