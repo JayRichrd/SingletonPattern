@@ -14,9 +14,11 @@ public final class Singleton {
 	 * @return
 	 */
 	public static Singleton getInstance() {
-		synchronized (Singleton.class) {
-			if (null == instance) {
-				instance = new Singleton();
+		if (null == instance) {
+			synchronized (Singleton.class) {
+				if (null == instance) {
+					instance = new Singleton();
+				}
 			}
 		}
 		return instance;
